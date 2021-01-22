@@ -1,0 +1,4 @@
+com/ipn/mx/modelo/dao/UsuarioDAO.class
+com/ipn/mx/controlador/Usuario_Servlet.class
+com/ipn/mx/entidades/Usuario.class
+com/ipn/mx/modelo/dto/UsuarioDTO.class
