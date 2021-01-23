@@ -5,6 +5,7 @@
  */
 package com.ipn.mx.entidades;
 
+import com.ipn.mx.utilerias.Imagen;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class Usuario {
     private String nombreUsuario;
     private String claveUsuario;
     private String rol;
+    private Imagen img;
     
 }

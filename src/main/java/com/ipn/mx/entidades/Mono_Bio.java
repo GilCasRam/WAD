@@ -5,6 +5,7 @@
  */
 package com.ipn.mx.entidades;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Mono_Bio {
+public class Mono_Bio implements Serializable {
     
     private int idmon_bio;
     private String clave;
