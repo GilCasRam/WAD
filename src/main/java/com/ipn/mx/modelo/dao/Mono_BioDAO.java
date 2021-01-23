@@ -5,11 +5,13 @@
  */
 package com.ipn.mx.modelo.dao;
 
-import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.dto.Mono_BioDTO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -49,7 +51,7 @@ public class Mono_BioDAO {
         }
     }
     
-    public void update(CategoriaDTO dto) throws SQLException {
+    public void update(Mono_BioDTO dto) throws SQLException {
        
         conexion.obtenerConexion_PostgreSQL();
         Connection con = conexion.getCon();
@@ -57,9 +59,11 @@ public class Mono_BioDAO {
         
         try{
             cs = con.prepareCall(SQL_UPDATE);
-            cs.setString(1, dto.getEntidad().getNombreCategoria());
-            cs.setString(2, dto.getEntidad().getDescripcionCategoria());
-            cs.setInt(3, dto.getEntidad().getIdCategoria());
+            cs.setString(1, dto.getEntidad().getClave());
+            cs.setString(2, dto.getEntidad().getNombre());
+            cs.setDouble(3, dto.getEntidad().getPrecio());
+            cs.setInt(4, dto.getEntidad().getIdCategoria().getIdCategoria());
+            cs.setInt(5, dto.getEntidad().getIdmon_bio());
             cs.executeUpdate();
         }
         finally{
@@ -72,5 +76,109 @@ public class Mono_BioDAO {
         }
     }
     
+    public void delete(Mono_BioDTO dto) throws SQLException {
+       
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        CallableStatement cs = null;
+        
+        try{
+            cs = con.prepareCall(SQL_DELETE);
+            cs.setInt(1, dto.getEntidad().getIdmon_bio());
+            cs.executeUpdate();
+        }
+        finally{
+            if(cs != null) {
+                cs.close();  
+            }
+            if(con != null) {
+                con.close();
+            }
+        }
+    }
     
+    private List obtenerResultados(ResultSet rs) throws SQLException {
+        List resultados = new ArrayList();
+        
+        while(rs.next()) {
+            Mono_BioDTO dto = new Mono_BioDTO();
+            dto.getEntidad().setIdmon_bio(rs.getInt("idmon_bio"));
+            dto.getEntidad().setClave(rs.getString("clave"));
+            dto.getEntidad().setNombre(rs.getString("nombre"));
+            dto.getEntidad().setPrecio(rs.getFloat("precio"));
+            dto.getEntidad().getIdCategoria().setIdCategoria(rs.getInt("idCategoria"));
+            resultados.add(dto);
+        }
+        
+        return resultados;   
+    }
+    
+    public Mono_BioDTO read(Mono_BioDTO dto) throws SQLException {
+        
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        
+        try {
+            cs = con.prepareCall(SQL_READ);
+            cs.setInt(1, dto.getEntidad().getIdmon_bio());
+            rs = cs.executeQuery();
+            List Resultados = obtenerResultados(rs);
+            if(Resultados.size() > 0){
+                
+                Mono_BioDTO resultado = (Mono_BioDTO) Resultados.get(0);
+                return resultado;
+            }else {
+                return null;
+            }
+        }
+        
+        finally{
+            
+            if(rs != null){
+                rs.close();
+            }
+            if(cs != null){
+                cs.close();
+            }
+            if(con != null){
+                con.close();
+            }
+        }
+    } 
+    
+    public List readAll() throws SQLException {
+        
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        
+        try {
+            cs = con.prepareCall(SQL_READ_ALL);
+            rs = cs.executeQuery();
+            List Resultados = (List) obtenerResultados(rs);
+            if(Resultados.size() > 0){
+                return Resultados;
+            }else {
+                return null;
+            }
+        }
+        
+        finally{
+            
+            if(rs != null){
+                rs.close();
+            }
+            if(cs != null){
+                cs.close();
+            }
+            if(con != null){
+                con.close();
+            }
+        }
+    }
+    
+     
 }
