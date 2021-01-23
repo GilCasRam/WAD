@@ -5,6 +5,7 @@
  */
 package com.ipn.mx.modelo.dao;
 
+import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.dto.Mono_BioDTO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -24,6 +25,52 @@ public class Mono_BioDAO {
         
     private final Conexion conexion = new Conexion();
 
+    public void create(Mono_BioDTO dto) throws SQLException {
+       
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        CallableStatement cs = null;
+        
+        try{
+            cs = con.prepareCall(SQL_INSERT);
+            cs.setString(1, dto.getEntidad().getClave());
+            cs.setString(2, dto.getEntidad().getNombre());
+            cs.setDouble(3, dto.getEntidad().getPrecio());
+            cs.setInt(4, dto.getEntidad().getIdCategoria().getIdCategoria());
+            cs.executeUpdate();
+        }
+        finally{
+            if(cs != null) {
+                cs.close();  
+            }
+            if(con != null) {
+                con.close();
+            }
+        }
+    }
+    
+    public void update(CategoriaDTO dto) throws SQLException {
+       
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        CallableStatement cs = null;
+        
+        try{
+            cs = con.prepareCall(SQL_UPDATE);
+            cs.setString(1, dto.getEntidad().getNombreCategoria());
+            cs.setString(2, dto.getEntidad().getDescripcionCategoria());
+            cs.setInt(3, dto.getEntidad().getIdCategoria());
+            cs.executeUpdate();
+        }
+        finally{
+            if(cs != null) {
+                cs.close();  
+            }
+            if(con != null) {
+                con.close();
+            }
+        }
+    }
     
     
 }
