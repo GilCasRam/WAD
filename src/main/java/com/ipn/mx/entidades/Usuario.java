@@ -5,10 +5,25 @@
  */
 package com.ipn.mx.entidades;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  *
  * @author Juan
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Usuario {
+    
+    private int idUsuario;
+    private String nombre;
+    private String email;
+    private String nombreUsuario;
+    private String claveUsuario;
+    private String rol;
     
 }

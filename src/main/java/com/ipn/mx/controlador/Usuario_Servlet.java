@@ -38,7 +38,7 @@ public class Usuario_Servlet extends HttpServlet {
             out.println("<title>Servlet Usuario_Servlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Usuario_Servlet attt " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Usuario_Servlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
