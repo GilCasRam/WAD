@@ -8,9 +8,7 @@ package com.ipn.mx.controlador;
 import com.ipn.mx.modelo.dao.CategoriaDAO;
 import com.ipn.mx.modelo.dto.CategoriaDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -122,7 +120,7 @@ public class Categoria_Servlet extends HttpServlet {
     }
 
     private void agregarCategoria(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher vista = request.getRequestDispatcher("categoriaForm");
+        RequestDispatcher vista = request.getRequestDispatcher("categoriaForm.jsp");
         try {
             vista.forward(request, response);
         } catch (ServletException | IOException ex) {
@@ -166,7 +164,7 @@ public class Categoria_Servlet extends HttpServlet {
             dto.getEntidad().setDescripcionCategoria(request.getParameter("descripcion"));
             try {
                 dao.create(dto);
-                RequestDispatcher vista = request.getRequestDispatcher("Categoria_Servlet?accion=listaCategorias");
+                RequestDispatcher vista = request.getRequestDispatcher("Categoria_Servlet?accion=listaDeCategorias");
                 vista.forward(request, response);
             } catch (SQLException | ServletException | IOException ex) {
                 Logger.getLogger(Categoria_Servlet.class.getName()).log(Level.SEVERE, null, ex);

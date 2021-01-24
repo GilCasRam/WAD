@@ -20,7 +20,7 @@ import java.util.List;
 public class UsuarioDAO {
     
     private static final String SQL_INSERT = "INSERT INTO Usuario(nombreusuario, username, claveusuario, correo, rol) VALUES"
-            + "(?,?,?,?,?,?)";
+            + "(?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE Usuario SET nombreusuario = ?, username = ?, claveusuario = ?, correo = ?"
             + "rol = ?  WHERE idusuario = ? ";
     private static final String SQL_DELETE = "DELETE FROM Usuario WHERE idusuario = ?";

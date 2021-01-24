@@ -5,14 +5,12 @@
  */
 package com.ipn.mx.controlador;
 
-import com.ipn.mx.entidades.Categoria;
+
 import com.ipn.mx.modelo.dao.ProductoDAO;
-import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.dto.ProductoDTO;
+import com.ipn.mx.modelo.dto.CategoriaDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -47,23 +45,23 @@ public class Producto_Servlet extends HttpServlet {
 
             listaDeProductos(request, response);
 
-        } else if (action.equals("nuevoProducto")) {
+        } else if (action.equals("nuevo")) {
 
             agregarProducto(request, response);
 
-        } else if (action.equals("eliminarProducto")) {
+        } else if (action.equals("eliminar")) {
 
             eliminarProducto(request, response);
 
-        } else if (action.equals("actualizarProducto")) {
+        } else if (action.equals("actualizar")) {
 
             actualizarProducto(request, response);
 
-        } else if (action.equals("verProducto")) {
+        } else if (action.equals("ver")) {
 
             mostrarProducto(request, response);
             
-        } else if (action.equals("guardarProducto")) {
+        } else if (action.equals("guardar")) {
 
             almacenarProducto(request, response);
         } 
@@ -177,7 +175,11 @@ public class Producto_Servlet extends HttpServlet {
             dto.getEntidad().setNombreProducto(request.getParameter("nombreProducto"));
             dto.getEntidad().setExistencia(Integer.parseInt(request.getParameter("existencia")));
             dto.getEntidad().setPrecio(Float.parseFloat(request.getParameter("precio")));
-            dto.getEntidad().getIdCategoria().setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
+            
+            CategoriaDTO categoria = new CategoriaDTO();
+            categoria.getEntidad().setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
+            
+            dto.getEntidad().setIdCategoria(categoria.getEntidad());
             
             try {
                 dao.create(dto);
