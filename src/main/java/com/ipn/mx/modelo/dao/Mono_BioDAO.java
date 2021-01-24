@@ -6,6 +6,7 @@
 package com.ipn.mx.modelo.dao;
 
 import com.ipn.mx.modelo.dto.Mono_BioDTO;
+import com.ipn.mx.modelo.dto.CategoriaDTO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -98,6 +99,7 @@ public class Mono_BioDAO {
     }
     
     private List obtenerResultados(ResultSet rs) throws SQLException {
+        
         List resultados = new ArrayList();
         
         while(rs.next()) {
@@ -106,7 +108,11 @@ public class Mono_BioDAO {
             dto.getEntidad().setClave(rs.getString("clave"));
             dto.getEntidad().setNombre(rs.getString("nombre"));
             dto.getEntidad().setPrecio(rs.getFloat("precio"));
-            dto.getEntidad().getIdCategoria().setIdCategoria(rs.getInt("idcategoria"));
+            
+            CategoriaDTO cat = new CategoriaDTO();
+            cat.getEntidad().setIdCategoria(rs.getInt("idcategoria"));
+            
+            dto.getEntidad().setIdCategoria(cat.getEntidad());
             resultados.add(dto);
         }
         
