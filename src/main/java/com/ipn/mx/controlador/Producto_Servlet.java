@@ -64,7 +64,11 @@ public class Producto_Servlet extends HttpServlet {
         } else if (action.equals("guardar")) {
 
             almacenarProducto(request, response);
-        } 
+            
+        } else if(action.equals("grafica")){
+            
+            graficaProductos(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -203,6 +207,16 @@ public class Producto_Servlet extends HttpServlet {
             } catch (SQLException | ServletException | IOException ex) {
                 Logger.getLogger(Producto_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+    }
+
+    private void graficaProductos(HttpServletRequest request, HttpServletResponse response) {
+        
+        try {
+            request.getRequestDispatcher("Grafica.jsp").forward(request, response);
+            
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(Producto_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

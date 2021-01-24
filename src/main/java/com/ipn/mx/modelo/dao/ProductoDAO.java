@@ -9,6 +9,7 @@ import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.dto.ProductoDTO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ProductoDAO {
     private static final String SQL_ELIMINAR = "delete from Producto where idproducto = ?";
     private static final String SQL_VER = "select * from Producto where idproducto = ?";
     private static final String SQL_VER_TODO = "select * from Producto";
+    private static final String SQL_GRAFICA = "select nombreproducto, existencia from producto";
     
     private final Conexion conexion = new Conexion();
     
@@ -191,6 +193,42 @@ public class ProductoDAO {
         }
     }
     
+    public List grafica() throws SQLException{
+        
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List lista = new ArrayList();
+        
+        try {
+            ps = con.prepareStatement(SQL_GRAFICA);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ProductoDTO dto = new ProductoDTO();
+                dto.getEntidad().setNombreProducto(rs.getString("nombreproducto"));
+                dto.getEntidad().setExistencia(rs.getInt("existencia"));
+                lista.add(dto);
+            }
+        }
+        finally {
+            
+            if(rs != null){
+                rs.close();
+            }
+            if(ps != null){
+                ps.close();
+            }
+            if(con != null){
+                con.close();
+            }
+        
+        }
+        
+        return lista;
+    }
+            
     
     
     
@@ -221,4 +259,5 @@ public class ProductoDAO {
         }
     }
     
+     
 }

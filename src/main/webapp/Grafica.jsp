@@ -4,11 +4,11 @@
     Author     : Juan
 --%>
 
+<%@page import="com.ipn.mx.modelo.dao.ProductoDAO"%>
+<%@page import="com.ipn.mx.modelo.dto.ProductoDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.ipn.mx.modelo.dao.GraficaDAO"%>
-<%@page import="com.ipn.mx.modelo.dto.GraficaDTO"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,31 +19,33 @@
     </head>
     <body>
         
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="CategoriaServlet?accion=listaDeCategorias">Lista de Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ProductoServlet?accion=listaDeProductos">Lista de Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="CategoriaServlet?accion=nuevo">Agregar Categoria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ProductoServlet?accion=nuevo">Agregar Producto</a>
-                    </li>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Usuario_Servlet?accion=listaDeUsuarios">Usuarios</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Categoria_Servlet?accion=listaDeCategorias">Categorias</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="Producto_Servlet?accion=listaDeProductos">Productos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Mono_Bio_Servlet?accion=listaDeMono">Monografías y Biografías</a>
+                  </li>
                 </ul>
+              </div>
             </div>
         </nav>
+        
         
         <div class="container-fluid mt-4"> 
             <div class="row">
@@ -51,10 +53,10 @@
                 <div class="col-6">
                     <button id="btn" class="btn btn-primary" style="width: 100%;">Graficar</button>
                 <%
-                    GraficaDAO dao = new GraficaDAO();
+                    ProductoDAO dao = new ProductoDAO();
                     List lista = new ArrayList();
                     
-                    String nombreCategoria;
+                    String nombreProducto;
                     int cant;
                     
                     try {
@@ -64,7 +66,7 @@
                 <div class="table-responsive">
                     <table id="myTable" class="table table-hover table-striped">
                         <tr class="thead-dark">
-                            <th>Categoria</th>
+                            <th>Producto</th>
                             <th>Cantidad</th>
                         </tr>
                     
@@ -72,12 +74,12 @@
                             
                             for(int i=0; i<lista.size(); i++){
                                 
-                                GraficaDTO dto = (GraficaDTO) lista.get(i);
-                                nombreCategoria = dto.getNombreCategoria();
-                                cant = dto.getCant();
+                                ProductoDTO dto = (ProductoDTO) lista.get(i);
+                                nombreProducto = dto.getEntidad().getNombreProducto();
+                                cant = dto.getEntidad().getExistencia();
                     %>
                         <tr>
-                            <td class="categoria"><%= nombreCategoria %></td>
+                            <td class="producto"><%= nombreProducto %></td>
                             <td class="cant"><%= cant %></td>
                         </tr>
                     <%
@@ -100,5 +102,7 @@
         
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="grafica.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>
 </html>

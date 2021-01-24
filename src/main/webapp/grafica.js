@@ -3,20 +3,20 @@ var btn = document.getElementById('btn').addEventListener('click', ()=>{
 
     var tabla = document.getElementById("myTable");
         
-    var categorias_tag = tabla.getElementsByClassName("categoria");
+    var producto_tag = tabla.getElementsByClassName("producto");
     var cant_tag = tabla.getElementsByClassName("cant");
 
-    var categorias = [];
+    var productos = [];
     var cantidad = []
 
-    for(let i=0; i< categorias_tag.length; i++){
-        categorias.push(categorias_tag.item(i).innerHTML);
+    for(let i=0; i< producto_tag.length; i++){
+        productos.push(producto_tag.item(i).innerHTML);
         cantidad.push(cant_tag.item(i).innerHTML);
     }
 
     background = [];
 
-    for(let i=0; i<categorias.length; i++){
+    for(let i=0; i<productos.length; i++){
         color = colorRGB();
         background.push(color);
     }
@@ -26,7 +26,7 @@ var btn = document.getElementById('btn').addEventListener('click', ()=>{
     var mychart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: categorias,
+            labels: productos,
             datasets: [{
                 label: '# de productos',
                 data: cantidad,
