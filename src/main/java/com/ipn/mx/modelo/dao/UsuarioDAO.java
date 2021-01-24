@@ -25,7 +25,7 @@ public class UsuarioDAO {
             + "rol = ?  WHERE idusuario = ? ";
     private static final String SQL_DELETE = "DELETE FROM Usuario WHERE idusuario = ?";
     private static final String SQL_READ = "SELECT * FROM Usuario WHERE idusuario = ?";
-    private static final String SQL_READ_ALL = "select * from Usuario";
+    private static final String SQL_READ_ALL = "select * from usuario";
     
     private final Conexion conexion = new Conexion();
     int contador = 0;

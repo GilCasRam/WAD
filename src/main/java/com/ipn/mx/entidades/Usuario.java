@@ -5,7 +5,7 @@
  */
 package com.ipn.mx.entidades;
 
-import com.ipn.mx.utilerias.Imagen;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Usuario {
+public class Usuario implements Serializable {
     
     private int idUsuario;
     private String nombre;
@@ -26,6 +26,5 @@ public class Usuario {
     private String nombreUsuario;
     private String claveUsuario;
     private String rol;
-    private Imagen img;
     
 }
