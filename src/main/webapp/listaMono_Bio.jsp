@@ -54,7 +54,7 @@
           
                 <h1 class="m-2">Monografías y Biografías</h1>
                 
-                <a class="btn btn-primary m-2" href="Mono_BioServlet?accion=nuevo">Agregar nuevo</a>
+                <a class="btn btn-primary m-2" href="Mono_Bio_Servlet?accion=nuevo">Agregar nuevo</a>
             </div>
             
             <%
@@ -97,17 +97,17 @@
             %>
                     
                     <tr>
-                        <td> <a class="btn btn-primary btn-xs" href="Mono_BioServlet?accion=ver&id=<%= idmon_bio %>"><%= idmon_bio %></a></td>
+                        <td> <a class="btn btn-primary btn-xs" href="Mono_Bio_Servlet?accion=ver&id=<%= idmon_bio %>"><%= idmon_bio %></a></td>
                         <td><%= clave %></td>
                         <td><%= nombre %></td>
                         <td><%= precio %></td>
                         <td><%= idCategoria %></td>
 
                         <td>
-                            <a class="btn btn-success btn-xs" href="Mono_BioServlet?accion=actualizar&id=<%= idmon_bio %>">Actualizar</a>
+                            <a class="btn btn-success btn-xs" href="Mono_Bio_Servlet?accion=actualizar&id=<%= idmon_bio %>">Actualizar</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger btn-xs" href="CategoriaServlet?accion=eliminar&id=<%= idmon_bio %>">Eliminar</a>
+                            <a class="btn btn-danger btn-xs" href="Mono_Bio_Servlet?accion=eliminar&id=<%= idmon_bio %>">Eliminar</a>
                         </td>
                     </tr>
             <%        

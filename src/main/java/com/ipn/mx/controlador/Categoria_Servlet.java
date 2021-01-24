@@ -111,14 +111,12 @@ public class Categoria_Servlet extends HttpServlet {
     }// </editor-fold>
 
     private void listaDeCategorias(HttpServletRequest request, HttpServletResponse response) {
-        CategoriaDAO dao = new CategoriaDAO();
-        
+
         try {
-            List lista = dao.readAll();
-            request.setAttribute("listaDeCategorias", lista);
+            
             RequestDispatcher vista = request.getRequestDispatcher("listaCategorias.jsp");
             vista.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(Categoria_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

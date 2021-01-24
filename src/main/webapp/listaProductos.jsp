@@ -52,7 +52,7 @@
           
                 <h1 class="m-2">Productos</h1>
                 
-                <a class="btn btn-primary m-2" href="ProductoServlet?accion=nuevo">Agregar Producto</a>
+                <a class="btn btn-primary m-2" href="Producto_Servlet?accion=nuevo">Agregar Producto</a>
             </div>
 
             
@@ -103,10 +103,10 @@
                         <td><%= existencia %></td>
                         <td><%= idCategoria %></td>
                         <td>
-                            <a class="btn btn-success btn-xs" href="ProductoServlet?accion=actualizar&id=<%=idProducto%>">Actualizar</a>
+                            <a class="btn btn-success btn-xs" href="Producto_Servlet?accion=actualizar&id=<%=idProducto%>">Actualizar</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger btn-xs" href="ProductoServlet?accion=eliminar&id=<%=idProducto%>">Eliminar</a>
+                            <a class="btn btn-danger btn-xs" href="Producto_Servlet?accion=eliminar&id=<%=idProducto%>">Eliminar</a>
                         </td>
                     </tr>
             <%        

@@ -106,7 +106,7 @@ public class Mono_BioDAO {
             dto.getEntidad().setClave(rs.getString("clave"));
             dto.getEntidad().setNombre(rs.getString("nombre"));
             dto.getEntidad().setPrecio(rs.getFloat("precio"));
-            dto.getEntidad().getIdCategoria().setIdCategoria(rs.getInt("idCategoria"));
+            dto.getEntidad().getIdCategoria().setIdCategoria(rs.getInt("idcategoria"));
             resultados.add(dto);
         }
         

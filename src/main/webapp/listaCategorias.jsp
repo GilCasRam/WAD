@@ -39,7 +39,7 @@
                     <a class="nav-link" href="#">Productos</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">Monografías y Biografías</a>
+                    <a class="nav-link" href="#">Monografías y Biografías</a>
                   </li>
                 </ul>
               </div>
@@ -54,7 +54,7 @@
           
                 <h1 class="m-2">Categorías</h1>
                 
-                <a class="btn btn-primary m-2" href="CategoriaServlet?accion=nuevo">Agregar Categoría</a>
+                <a class="btn btn-primary m-2" href="Categoria_Servlet?accion=nuevo">Agregar Categoría</a>
             </div>
             
             <%

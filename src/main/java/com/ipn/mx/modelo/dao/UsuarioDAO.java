@@ -25,8 +25,7 @@ public class UsuarioDAO {
             + "rol = ?  WHERE idusuario = ? ";
     private static final String SQL_DELETE = "DELETE FROM Usuario WHERE idusuario = ?";
     private static final String SQL_READ = "SELECT * FROM Usuario WHERE idusuario = ?";
-    private static final String SQL_READ_ALL = "SELECT * FROM usuario";
-    private static final String SQL_READ_USUARIO = "SELECT * FROM Usuario WHERE nombreusuario = ? AND claveusuario = ?";
+    private static final String SQL_READ_ALL = "select * from usuario";
     
     private final Conexion conexion = new Conexion();
     int contador = 0;
@@ -95,9 +94,9 @@ public class UsuarioDAO {
         while (rs.next()) {
             UsuarioDTO dto = new UsuarioDTO();
             dto.getEntidad().setIdUsuario(rs.getInt("idusuario"));
-            dto.getEntidad().setNombre(rs.getString("nombre"));
-            dto.getEntidad().setNombreUsuario(rs.getString("nombreusuario"));
-            dto.getEntidad().setClaveUsuario(rs.getString("claveUsuario"));
+            dto.getEntidad().setNombre(rs.getString("nombreusuario"));
+            dto.getEntidad().setNombreUsuario(rs.getString("username"));
+            dto.getEntidad().setClaveUsuario(rs.getString("claveusuario"));
             dto.getEntidad().setEmail(rs.getString("correo"));
             dto.getEntidad().setRol(rs.getString("rol"));
             resultados.add(dto);

@@ -41,7 +41,7 @@ public class Mono_Bio_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
 
-        if (accion.equals("listaDeUsuarios")) {
+        if (accion.equals("listaDeMono")) {
 
             listaDeMono(request, response);
 
@@ -108,14 +108,11 @@ public class Mono_Bio_Servlet extends HttpServlet {
     }// </editor-fold>
 
     private void listaDeMono(HttpServletRequest request, HttpServletResponse response) {
-        Mono_BioDAO dao = new Mono_BioDAO();
-
         try {
-            List lista = dao.readAll();
-            request.setAttribute("listaMono", lista);
-            RequestDispatcher vista = request.getRequestDispatcher("listaMono.jsp");
+         
+            RequestDispatcher vista = request.getRequestDispatcher("listaMono_Bio.jsp");
             vista.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(Mono_Bio_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -4,10 +4,11 @@
     Author     : Juan
 --%>
 
-<%@page import="java.util.List"%>
-<%@page import="java.sql.SQLException"%>
 <%@page import="com.ipn.mx.modelo.dao.UsuarioDAO"%>
 <%@page import="com.ipn.mx.modelo.dto.UsuarioDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.SQLException"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,7 @@
           
                 <h1 class="m-2">Usuarios</h1>
                 
-                <a class="btn btn-primary m-2" href="UsuarioServlet?accion=nuevo">Agregar Usuario</a>
+                <a class="btn btn-primary m-2" href="Usuario_Servlet?accion=nuevo">Agregar Usuario</a>
             </div>
 
             <%
@@ -68,8 +69,7 @@
                  
                  try {
                      
-                     List lista = dao.readAll();
-                     
+                    List lista = dao.readAll();
             %>
             
             <table class="table table-responsive table-hover table-striped">    
@@ -100,25 +100,25 @@
             %>
                     
                     <tr>
-                        <td><a class="btn btn-primary btn-xs" href="UsuarioServlet?accion=ver&id=<%= idUsuario %>"><%=idUsuario%></a></td>
+                        <td><a class="btn btn-primary btn-xs" href="Usuario_Servlet?accion=ver&id=<%= idUsuario %>"><%=idUsuario%></a></td>
                         <td><%= nombre %></td>
                         <td><%= nombreUsuario %></td>
                         <td><%= claveUsuario %></td>
                         <td><%= email %></td>
                         <td><%= rol %></td>
                         <td>
-                            <a class="btn btn-success btn-xs" href="UsuarioServlet?accion=actualizar&id=<%= idUsuario %>">Actualizar</a>
+                            <a class="btn btn-success btn-xs" href="Usuario_Servlet?accion=actualizar&id=<%= idUsuario %>">Actualizar</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger btn-xs" href="UsuarioServlet?accion=eliminar&id=<%= idUsuario %>">Eliminar</a>
+                            <a class="btn btn-danger btn-xs" href="Usuario_Servlet?accion=eliminar&id=<%= idUsuario %>">Eliminar</a>
                         </td>
                     </tr>
             <%        
-                    }
                 }
-                catch(SQLException e){
-                    e.printStackTrace();
-                }
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
             %>
             
             </table>

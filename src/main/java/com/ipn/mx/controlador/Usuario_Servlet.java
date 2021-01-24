@@ -107,17 +107,15 @@ public class Usuario_Servlet extends HttpServlet {
     }// </editor-fold>
 
     private void listaDeUsuarios(HttpServletRequest request, HttpServletResponse response) {
-        UsuarioDAO dao = new UsuarioDAO();
 
         try {
-            List lista = dao.readAll();
-            request.setAttribute("listaUsuarios", lista);
             RequestDispatcher vista;
             vista = request.getRequestDispatcher("listaUsuarios.jsp");
             vista.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
 
     }
 

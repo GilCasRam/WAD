@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class CategoriaDAO {
     
-    private static final String SQL_INSERT = "insert into Categoria (nombrecategoria, descripcioncategoria) values (?,?)";
-    private static final String SQL_UPDATE = "update Categoria set nombrecategoria = ?, descripcioncategoria = ? where idcategoria = ?";
-    private static final String SQL_DELETE = "delete from Categoria where idcategoria = ?";
-    private static final String SQL_READ = "select * from Categoria where idcategoria = ?";
-    private static final String SQL_READ_ALL = "select * from Categoria";
+    private static final String SQL_INSERT = "insert into categoria (nombrecategoria, descripcion) values (?,?)";
+    private static final String SQL_UPDATE = "update categoria set nombrecategoria = ?, descripcion = ? where idcategoria = ?";
+    private static final String SQL_DELETE = "delete from categoria where idcategoria = ?";
+    private static final String SQL_READ = "select * from categoria where idcategoria = ?";
+    private static final String SQL_READ_ALL = "select * from categoria";
         
     private final Conexion conexion = new Conexion();
 
@@ -99,9 +99,9 @@ public class CategoriaDAO {
         
         while(rs.next()) {
             CategoriaDTO dto = new CategoriaDTO();
-            dto.getEntidad().setIdCategoria(rs.getInt("idCategoria"));
-            dto.getEntidad().setNombreCategoria(rs.getString("nombreCategoria"));
-            dto.getEntidad().setDescripcionCategoria(rs.getString("descripcionCategoria"));
+            dto.getEntidad().setIdCategoria(rs.getInt("idcategoria"));
+            dto.getEntidad().setNombreCategoria(rs.getString("nombrecategoria"));
+            dto.getEntidad().setDescripcionCategoria(rs.getString("descripcion"));
             resultados.add(dto);
         }
         

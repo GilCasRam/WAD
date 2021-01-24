@@ -109,14 +109,13 @@ public class Producto_Servlet extends HttpServlet {
     }// </editor-fold>
 
     private void listaDeProductos(HttpServletRequest request, HttpServletResponse response) {
-        ProductoDAO dao = new ProductoDAO();
+        
         try {
-            List lista = dao.readAll();
-            request.setAttribute("listaProductos", lista);
+            
             RequestDispatcher vista = request.getRequestDispatcher("listaProductos.jsp");
             vista.forward(request, response);
             
-            } catch (SQLException | ServletException | IOException ex) {
+            } catch (ServletException | IOException ex) {
             Logger.getLogger(Producto_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
