@@ -5,18 +5,24 @@
  */
 package com.ipn.mx.controlador;
 
+import com.ipn.mx.modelo.dao.Conexion;
 import com.ipn.mx.modelo.dao.UsuarioDAO;
 import com.ipn.mx.modelo.dto.UsuarioDTO;
+import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
  *
@@ -64,6 +70,13 @@ public class Usuario_Servlet extends HttpServlet {
 
             mostrarUsuario(request, response);
 
+        } else if(accion.equals("verPDF")){
+            
+            try {
+                verPDF(request,response);
+            } catch (SQLException ex) {
+                Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -200,6 +213,33 @@ public class Usuario_Servlet extends HttpServlet {
             } catch (SQLException | ServletException | IOException ex) {
             Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void verPDF(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        
+        Conexion conexion = new Conexion();
+        conexion.obtenerConexion_PostgreSQL();        
+        Connection con = conexion.getCon();
+        
+        try {
+            ServletOutputStream sos = response.getOutputStream();//SALIDA PARA EL REPORTE PDF
+            
+            File reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/ReporteUsuarios.jasper"));
+            
+            byte[] bytes = JasperRunManager.runReportToPdf(reporte.getPath(),null, con);//ARREGLO DE BYTES QUE VA A GUARDAR EL REPORTE
+            
+            response.setContentType("application/pdf");
+            response.setContentLength(bytes.length);
+            
+            sos.write(bytes, 0, bytes.length);//ES EL METODO QUE VA A DIBUJAR EL REPORTE
+            sos.flush();//LIMPIAMOS EL FLUJO DE SALIDA 
+            sos.close();//CERRAMOS LA SALIDA
+            
+        } catch (IOException | JRException ex) {
+            Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
 }
