@@ -41,7 +41,7 @@ public class Mono_Bio_Servlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
 
@@ -71,7 +71,11 @@ public class Mono_Bio_Servlet extends HttpServlet {
 
         } else if(accion.equals("verPDF")){
             
-            verPDF(request, response);
+            try {
+                verPDF(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(Mono_Bio_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
