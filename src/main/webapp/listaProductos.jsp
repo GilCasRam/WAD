@@ -52,7 +52,13 @@
           
                 <h1 class="m-2">Productos</h1>
                 
-                <a class="btn btn-primary m-2" href="Producto_Servlet?accion=nuevo">Agregar Producto</a>
+                
+                <div class="container">
+                    <a class="btn btn-primary m-2 col-6" href="Producto_Servlet?accion=nuevo">Agregar Producto</a>
+                
+                    <a class="btn btn-info m-2 col-6" href="Producto_Servlet?accion=grafica">Ver Gráfica</a>
+                </div>
+               
             </div>
 
             
@@ -123,5 +129,7 @@
             </table>
               
         </div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>
 </html>
