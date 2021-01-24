@@ -23,7 +23,7 @@
               <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="Usuario_Servlet?accion=listaDeUsuarios">Usuarios</a>
@@ -57,12 +57,12 @@
 
                 <div class="form-group">
                     <label for="sdf">Existencia</label>
-                    <input type="number" class="form-control" name="existencia" id="existencia" required>
+                    <input type="number" class="form-control" name="existencia" id="existencia" min="0" max="1000" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="sdf">Precio</label>
-                    <input type="number" class="form-control" name="precio" id="precio" required>
+                    <input type="number" class="form-control" name="precio" id="precio" step="any" min="0" max="400" required>
                 </div>
                 
                 <div class="form-group">

@@ -54,7 +54,12 @@
           
                 <h1 class="m-2">Monografías y Biografías</h1>
                 
-                <a class="btn btn-primary m-2" href="Mono_Bio_Servlet?accion=nuevo">Agregar nuevo</a>
+                <div class="container">
+                    <a class="btn btn-primary m-2 col-6" href="Mono_Bio_Servlet?accion=nuevo">Agregar nuevo</a>
+                
+                    <a class="btn btn-info m-2 col-6" href="Mono_Bio_Servlet?accion=verPDF">Ver Reporte</a>
+                </div> 
+                
             </div>
             
             <%

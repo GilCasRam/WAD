@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -190,5 +192,33 @@ public class ProductoDAO {
     }
     
     
+    
+    
+    public static void main(String[] args) {
+        
+        
+        ProductoDTO dto = new ProductoDTO();
+        ProductoDAO dao = new ProductoDAO();
+        
+        CategoriaDTO cat = new CategoriaDTO();
+        
+        dto.getEntidad().setNombreProducto("Hojas");
+        dto.getEntidad().setExistencia(100);
+        dto.getEntidad().setPrecio((float) 2.50);
+        
+        cat.getEntidad().setIdCategoria(2);
+            
+        dto.getEntidad().setIdCategoria(cat.getEntidad());
+       
+        
+        try {
+            dao.create(dto);
+            
+            System.out.print(dto.toString());
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

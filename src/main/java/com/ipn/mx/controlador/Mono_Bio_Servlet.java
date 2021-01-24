@@ -8,6 +8,7 @@ package com.ipn.mx.controlador;
 import com.ipn.mx.modelo.dao.Conexion;
 import com.ipn.mx.modelo.dao.Mono_BioDAO;
 import com.ipn.mx.modelo.dto.Mono_BioDTO;
+import com.ipn.mx.modelo.dto.CategoriaDTO;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -157,7 +158,7 @@ public class Mono_Bio_Servlet extends HttpServlet {
         Mono_BioDTO dto = new Mono_BioDTO();
         dto.getEntidad().setIdmon_bio(Integer.parseInt(request.getParameter("id")));
         try {
-            dao.read(dto);
+            dto = dao.read(dto);
             request.setAttribute("mono", dto);
             RequestDispatcher vista = request.getRequestDispatcher("monoForm.jsp");
             vista.forward(request, response);
@@ -173,7 +174,11 @@ public class Mono_Bio_Servlet extends HttpServlet {
             dto.getEntidad().setNombre(request.getParameter("nombre"));
             dto.getEntidad().setClave(request.getParameter("claveMono"));
             dto.getEntidad().setPrecio(Float.parseFloat(request.getParameter("precio")));
-            dto.getEntidad().getIdCategoria().setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
+            
+            CategoriaDTO categoria = new CategoriaDTO();
+            categoria.getEntidad().setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
+            
+            dto.getEntidad().setIdCategoria(categoria.getEntidad());
             try {
                 dao.create(dto);
                 RequestDispatcher vista = request.getRequestDispatcher("Mono_Bio_Servlet?accion=listaDeMono");

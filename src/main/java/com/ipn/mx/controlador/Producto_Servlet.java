@@ -172,6 +172,7 @@ public class Producto_Servlet extends HttpServlet {
         ProductoDAO dao = new ProductoDAO();
         ProductoDTO dto = new ProductoDTO();
         if(request.getParameter("id") == null || request.getParameter("id").isEmpty()){
+            
             dto.getEntidad().setNombreProducto(request.getParameter("nombreProducto"));
             dto.getEntidad().setExistencia(Integer.parseInt(request.getParameter("existencia")));
             dto.getEntidad().setPrecio(Float.parseFloat(request.getParameter("precio")));
