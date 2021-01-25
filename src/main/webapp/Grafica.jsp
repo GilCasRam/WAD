@@ -60,8 +60,8 @@
         <div class="container-fluid mt-4"> 
             <div class="row">
 
-                <div class="col-6">
-                    <button id="btn" class="btn btn-primary" style="width: 100%;">Graficar</button>
+                <div class="col-6 p-5">
+                    <button id="btn" class="btn btn-primary m-2" style="width: 100%;">Graficar</button>
                 <%
                     ProductoDAO dao = new ProductoDAO();
                     List lista = new ArrayList();
@@ -74,10 +74,10 @@
                 
                 %>
                 <div class="table-responsive">
-                    <table id="myTable" class="table table-hover table-striped">
-                        <tr class="thead-dark">
-                            <th>Producto</th>
-                            <th>Cantidad</th>
+                    <table id="myTable" class="table table-dark table-responsive table-hover table-striped">
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
                         </tr>
                     
                     <%
@@ -89,7 +89,7 @@
                                 cant = dto.getEntidad().getExistencia();
                     %>
                         <tr>
-                            <td class="producto"><%= nombreProducto %></td>
+                            <td scope="row" class="producto"><%= nombreProducto %></td>
                             <td class="cant"><%= cant %></td>
                         </tr>
                     <%
