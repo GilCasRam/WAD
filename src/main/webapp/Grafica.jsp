@@ -60,7 +60,7 @@
         <div class="container-fluid mt-4"> 
             <div class="row">
 
-                <div class="col-6 p-5">
+                <div class="col-3 p-5">
                     <button id="btn" class="btn btn-primary m-2" style="width: 100%;">Graficar</button>
                 <%
                     ProductoDAO dao = new ProductoDAO();
@@ -73,7 +73,7 @@
                         lista = dao.grafica();
                 
                 %>
-                <div class="table-responsive">
+                
                     <table id="myTable" class="table table-dark table-responsive table-hover table-striped">
                         <tr>
                             <th scope="col">Producto</th>
@@ -101,10 +101,10 @@
                     
                     %>
                     </table>
-                </div>
+                
                 </div>
                 
-                <div class="col-6">
+                <div class="col-9">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
