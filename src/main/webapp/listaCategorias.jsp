@@ -16,6 +16,17 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
         <title>Lista de Categorias</title>
+        
+         
+        <style>
+            
+            body {
+                background-image: url("imagenes/fondo.jpg");
+                background-repeat: no-repeat;
+                background-position: right top;
+            }
+            
+        </style>
     </head>
     <body>
 
@@ -48,7 +59,7 @@
     
 
 
-        <div class="container">
+      
             
             <div class="container title p-5">
           
@@ -56,7 +67,9 @@
                 
                 <a class="btn btn-primary m-2" href="Categoria_Servlet?accion=nuevo">Agregar Categoría</a>
             </div>
-            
+        
+        <div class="container container-fluid">
+        
             <%
                 int idCategoria;
                 String nombreCategoria;
@@ -70,12 +83,12 @@
                     List lista = dao.readAll();
             %>
 
-            <table class="table table-responsive table-hover table-striped">    
-                <tr class="thead-dark">
-                    <th>Clave Categoría</th>
-                    <th>Nombre Categoría</th>
-                    <th>Descripción Categoría</th>
-                    <th colspan="2"> Acciones</th>
+            <table class="table table-responsive table-dark table-hover table-striped">    
+                <tr>
+                    <th scope="col">Clave Categoría</th>
+                    <th scope="col">Nombre Categoría</th>
+                    <th scope="col">Descripción Categoría</th>
+                    <th scope="col" colspan="2"> Acciones</th>
                 </tr>
                 
             <%
@@ -91,7 +104,7 @@
             %>
                     
                     <tr>
-                        <td> <a class="btn btn-primary btn-xs" href="CategoriaServlet?accion=ver&id=<%=idCategoria%>"><%=idCategoria%></a></td>
+                        <td scope="row"> <a class="btn btn-primary btn-xs" href="CategoriaServlet?accion=ver&id=<%=idCategoria%>"><%=idCategoria%></a></td>
                         <td><%= nombreCategoria %></td>
                         <td><%= descripcionCategoria %></td>
                         
@@ -114,7 +127,7 @@
             %>
 
             </table>
-        </div>
+        <div>
             
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>

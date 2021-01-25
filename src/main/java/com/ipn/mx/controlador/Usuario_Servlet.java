@@ -8,6 +8,7 @@ package com.ipn.mx.controlador;
 import com.ipn.mx.modelo.dao.Conexion;
 import com.ipn.mx.modelo.dao.UsuarioDAO;
 import com.ipn.mx.modelo.dto.UsuarioDTO;
+import com.ipn.mx.utilerias.LoginManagerVF;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -77,7 +78,19 @@ public class Usuario_Servlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
+        else if(accion.equals("entrar")) {
+            iniciarSesion(request, response);
+        }
+        else if(accion.equals("cerrar")) {
+            cerrarSesion(request, response);
+        }
+        
+                
+               
+       
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -240,6 +253,52 @@ public class Usuario_Servlet extends HttpServlet {
         }
         
         
+    }
+
+    private void iniciarSesion(HttpServletRequest request, HttpServletResponse response) {
+        
+        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDTO dto = new UsuarioDTO();
+        LoginManagerVF login = new LoginManagerVF();
+
+        int resultado;
+
+        dto.getEntidad().setNombreUsuario(request.getParameter("nombreUsuario"));
+        dto.getEntidad().setClaveUsuario(request.getParameter("claveUsuario"));
+        
+        try {
+            resultado = dao.readUsuario(dto);
+
+            if (resultado == 1) {
+                
+                login.login(request, response, dto.getEntidad().getNombreUsuario());
+                
+                if(dto == null){
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+
+                } else{  
+                    request.getRequestDispatcher("exito.jsp").forward(request, response);  
+                }
+             
+            } else {
+                request.getRequestDispatcher("index.html").forward(request, response);  
+            }
+        } catch (SQLException | ServletException | IOException ex) {
+            Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+
+    private void cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
+        
+        LoginManagerVF login = new LoginManagerVF();
+        login.logout(request, response);
+        try {
+            request.getRequestDispatcher("logout_exito.jsp").forward(request, response);
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(Usuario_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

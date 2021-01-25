@@ -16,6 +16,17 @@
         <title>Lista de Productos</title>
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        
+         
+        <style>
+            
+            body {
+                background-image: url("imagenes/fondo.jpg");
+                background-repeat: no-repeat;
+                background-position: right top;
+            }
+            
+        </style>
     </head>
     <body>
         
@@ -46,7 +57,7 @@
             </div>
         </nav>
         
-        <div class="container">
+       
             
             <div class="container title p-5">
           
@@ -61,7 +72,7 @@
                
             </div>
 
-            
+        <div class="container container-fluid">    
             <%
                 int idProducto;
                 String nombreProducto;
@@ -77,14 +88,14 @@
                     List lista = dao.readAll();
             %>
 
-            <table class="table table-responsive table-hover table-striped">    
-                <tr class="thead-dark">
-                    <th>Clave Producto</th>
-                    <th>Nombre Producto</th>
-                    <th>Precio</th>
-                    <th>Existencia</th>
-                    <th>Clave Categoría</th>
-                    <th colspan="2"> Acciones</th>
+            <table class="table table-responsive table-dark table-hover table-striped">    
+                <tr>
+                    <th scope="col">Clave Producto</th>
+                    <th scope="col">Nombre Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Existencia</th>
+                    <th scope="col">Clave Categoría</th>
+                    <th scope="col" colspan="2"> Acciones</th>
                 </tr>
                 
             <%
@@ -103,7 +114,7 @@
             %>
                     
                     <tr>
-                        <td> <a class="btn btn-primary btn-xs" href="ProductoServlet?accion=ver&id=<%=idProducto%>"><%=idProducto%></a></td>
+                        <td scope="row"> <a class="btn btn-primary btn-xs" href="ProductoServlet?accion=ver&id=<%=idProducto%>"><%=idProducto%></a></td>
                         <td><%= nombreProducto %></td>
                         <td><%= precio %></td>
                         <td><%= existencia %></td>
@@ -128,7 +139,7 @@
 
             </table>
               
-        </div>
+        
             
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>

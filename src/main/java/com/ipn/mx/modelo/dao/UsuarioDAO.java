@@ -26,9 +26,9 @@ public class UsuarioDAO {
     private static final String SQL_DELETE = "DELETE FROM Usuario WHERE idusuario = ?";
     private static final String SQL_READ = "SELECT * FROM Usuario WHERE idusuario = ?";
     private static final String SQL_READ_ALL = "select * from usuario";
+    private static final String SQL_READ_USUARIO = "SELECT * FROM Usuario WHERE username = ? AND claveusuario = ?";
     
     private final Conexion conexion = new Conexion();
-    int contador = 0;
     
     public void create(UsuarioDTO dto) throws SQLException {
         
@@ -167,6 +167,50 @@ public class UsuarioDAO {
             }
         }
     }
+    
+    public int readUsuario(UsuarioDTO dto) throws SQLException {
+        
+        conexion.obtenerConexion_PostgreSQL();
+        Connection con = conexion.getCon();
+        
+         int contador = 0;
+        
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        
+        try {
+            cs = con.prepareCall(SQL_READ_USUARIO);
+            cs.setString(1, dto.getEntidad().getNombreUsuario());
+            cs.setString(2, dto.getEntidad().getClaveUsuario());
+            rs = cs.executeQuery();
+
+            while (rs.next()) {
+                contador = contador + 1;
+                dto.getEntidad().setNombreUsuario(rs.getString("nombreusuario"));
+                dto.getEntidad().setClaveUsuario(rs.getString("claveusuario"));
+            }
+            if (contador == 1) {
+                
+                return 1;
+                
+            } else {
+                
+                return 0;
+            }
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (cs != null) {
+                cs.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
     
 
 }

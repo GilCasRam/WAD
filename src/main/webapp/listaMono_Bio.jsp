@@ -16,6 +16,17 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
         <title>Lista de Monografías y Biografías</title>
+        
+         
+        <style>
+            
+            body {
+                background-image: url("imagenes/fondo.jpg");
+                background-repeat: repeat-y;
+                background-position: right top;
+            }
+            
+        </style>
     </head>
     <body>
 
@@ -48,7 +59,7 @@
     
 
 
-        <div class="container">
+     
             
             <div class="container title p-5">
           
@@ -62,7 +73,8 @@
                 </div> 
                 
             </div>
-            
+        
+        <div class="container container-fluid">
             <%
                 int idmon_bio;
                 String clave;
@@ -78,14 +90,14 @@
                     List lista = dao.readAll();
             %>
 
-            <table class="table table-responsive table-hover table-striped">    
-                <tr class="thead-dark">
-                    <th>id de artículo</th>
-                    <th>Clave</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>clave de Categoría</th>
-                    <th colspan="2"> Acciones</th>
+            <table class="table table-responsive table-dark table-hover table-striped">    
+                <tr>
+                    <th scope="col">id de artículo</th>
+                    <th scope="col">Clave</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">clave de Categoría</th>
+                    <th scope="col" colspan="2"> Acciones</th>
                 </tr>
                 
             <%
@@ -103,7 +115,7 @@
             %>
                     
                     <tr>
-                        <td> <a class="btn btn-primary btn-xs" href="Mono_Bio_Servlet?accion=ver&id=<%= idmon_bio %>"><%= idmon_bio %></a></td>
+                        <td scope="row"> <a class="btn btn-primary btn-xs" href="Mono_Bio_Servlet?accion=ver&id=<%= idmon_bio %>"><%= idmon_bio %></a></td>
                         <td><%= clave %></td>
                         <td><%= nombre %></td>
                         <td><%= precio %></td>
@@ -128,7 +140,7 @@
             %>
 
             </table>
-        </div>
+        <div>
             
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>

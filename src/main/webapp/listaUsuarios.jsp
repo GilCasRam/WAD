@@ -17,6 +17,17 @@
         <title>Lista de Usuarios</title>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+         
+        <style>
+            
+            body {
+                background-image: url("imagenes/fondo.jpg");
+                background-repeat: repeat-y;
+                background-position: right top;
+            }
+            
+        </style>
     </head>
     <body>
 
@@ -48,7 +59,7 @@
         </nav>
 
 
-        <div class="container">
+       
 
             <div class="container title p-5">
 
@@ -75,17 +86,18 @@
 
                     List lista = dao.readAll();
             %>
+        <div class="container col-11">
+            
+            <table class="table table-responsive table-dark table-hover table-striped">    
+                <tr>
+                    <th scope="col">Clave Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nombre Usuario</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Rol</th>
 
-            <table class="table table-responsive table-hover table-striped">    
-                <tr class="thead-dark">
-                    <th>Clave Usuario</th>
-                    <th>Nombre</th>
-                    <th>Nombre Usuario</th>
-                    <th>Contraseña</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-
-                    <th colspan="2"> Acciones</th>
+                    <th scope="col" colspan="2"> Acciones</th>
                 </tr>
 
                 <%
@@ -102,7 +114,7 @@
                 %>
 
                 <tr>
-                    <td><a class="btn btn-primary btn-xs" href="Usuario_Servlet?accion=ver&id=<%= idUsuario%>"><%=idUsuario%></a></td>
+                    <td scope="row"><a class="btn btn-primary btn-xs" href="Usuario_Servlet?accion=ver&id=<%= idUsuario%>"><%=idUsuario%></a></td>
                     <td><%= nombre%></td>
                     <td><%= nombreUsuario%></td>
                     <td><%= claveUsuario%></td>
@@ -123,7 +135,7 @@
                 %>
 
             </table>
-        </div>  
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     </body>
