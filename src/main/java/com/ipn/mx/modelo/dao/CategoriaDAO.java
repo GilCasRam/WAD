@@ -13,10 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Juan
- */
+
 public class CategoriaDAO {
     
     private static final String SQL_INSERT = "insert into categoria (nombrecategoria, descripcion) values (?,?)";

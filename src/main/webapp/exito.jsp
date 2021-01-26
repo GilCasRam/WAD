@@ -1,7 +1,7 @@
 <%-- 
     Document   : exito
     Created on : 24-ene-2021, 18:26:18
-    Author     : Juan
+    Author     : dany
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

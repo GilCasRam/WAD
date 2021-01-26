@@ -1,8 +1,7 @@
 <%-- 
     Document   : listaCategorias
     Created on : 23-ene-2021, 16:35:43
-    Author     : Juan
---%>
+    Author     : dany
 
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.ipn.mx.modelo.dto.CategoriaDTO"%>
@@ -50,7 +49,7 @@
                     <a class="nav-link" href="Producto_Servlet?accion=listaDeProductos">Productos</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="Mono_Bio_Servlet?accion=listaDeMono">MonografÃ­as y BiografÃ­as</a>
+                    <a class="nav-link" href="Mono_Bio_Servlet?accion=listaDeMono">Monografías y Biografías</a>
                   </li>
                 </ul>
               </div>
@@ -63,9 +62,9 @@
             
             <div class="container title p-5">
           
-                <h1 class="m-2">CategorÃ­as</h1>
+                <h1 class="m-2">Categorías</h1>
                 
-                <a class="btn btn-primary m-2" href="Categoria_Servlet?accion=nuevo">Agregar CategorÃ­a</a>
+                <a class="btn btn-primary m-2" href="Categoria_Servlet?accion=nuevo">Agregar Categoría</a>
             </div>
         
         <div class="container container-fluid">
@@ -85,9 +84,9 @@
 
             <table class="table table-responsive table-dark table-hover table-striped">    
                 <tr>
-                    <th scope="col">Clave CategorÃ­a</th>
-                    <th scope="col">Nombre CategorÃ­a</th>
-                    <th scope="col">DescripciÃ³n CategorÃ­a</th>
+                    <th scope="col">Clave Categoría</th>
+                    <th scope="col">Nombre Categoría</th>
+                    <th scope="col">Descripción Categoría</th>
                     <th scope="col" colspan="2"> Acciones</th>
                 </tr>
                 
@@ -104,15 +103,15 @@
             %>
                     
                     <tr>
-                        <td scope="row"> <a class="btn btn-primary btn-xs" href="CategoriaServlet?accion=ver&id=<%=idCategoria%>"><%=idCategoria%></a></td>
+                        <td scope="row"> <a class="btn btn-primary btn-xs" href="Categoria_Servlet?accion=ver&id=<%=idCategoria%>"><%=idCategoria%></a></td>
                         <td><%= nombreCategoria %></td>
                         <td><%= descripcionCategoria %></td>
                         
                         <td>
-                            <a class="btn btn-success btn-xs" href="CategoriaServlet?accion=actualizar&id=<%=idCategoria%>">Actualizar</a>
+                            <a class="btn btn-success btn-xs" href="Categoria_Servlet?accion=actualizar&id=<%=idCategoria%>">Actualizar</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger btn-xs" href="CategoriaServlet?accion=eliminar&id=<%=idCategoria%>">Eliminar</a>
+                            <a class="btn btn-danger btn-xs" href="Categoria_Servlet?accion=eliminar&id=<%=idCategoria%>">Eliminar</a>
                         </td>
                     </tr>
             <%        

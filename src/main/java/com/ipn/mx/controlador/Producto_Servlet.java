@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Jesus
- */
+
 @WebServlet(name = "Producto_Servlet", urlPatterns = {"/Producto_Servlet"})
 public class Producto_Servlet extends HttpServlet {
 
@@ -165,7 +162,7 @@ public class Producto_Servlet extends HttpServlet {
         try {
             dto = dao.read(dto);
             request.setAttribute("producto", dto);
-            RequestDispatcher vista = request.getRequestDispatcher("mostarProducto.jsp");
+            RequestDispatcher vista = request.getRequestDispatcher("mostrarProducto.jsp");
             vista.forward(request, response);
             } catch (SQLException | ServletException | IOException ex) {
             Logger.getLogger(Producto_Servlet.class.getName()).log(Level.SEVERE, null, ex);

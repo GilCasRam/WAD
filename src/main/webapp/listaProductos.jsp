@@ -1,7 +1,7 @@
 <%-- 
     Document   : listaProductos
     Created on : 23-ene-2021, 16:35:33
-    Author     : Juan
+    Author     : dany
 --%>
 
 <%@page import="com.ipn.mx.modelo.dao.ProductoDAO"%>
@@ -114,7 +114,7 @@
             %>
                     
                     <tr>
-                        <td scope="row"> <a class="btn btn-primary btn-xs" href="ProductoServlet?accion=ver&id=<%=idProducto%>"><%=idProducto%></a></td>
+                        <td scope="row"> <a class="btn btn-primary btn-xs" href="Producto_Servlet?accion=ver&id=<%=idProducto%>"><%=idProducto%></a></td>
                         <td><%= nombreProducto %></td>
                         <td><%= precio %></td>
                         <td><%= existencia %></td>

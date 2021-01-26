@@ -25,10 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 
-/**
- *
- * @author Juan
- */
+
 @WebServlet(name = "Usuario_Servlet", urlPatterns = {"/Usuario_Servlet"})
 public class Usuario_Servlet extends HttpServlet {
 
@@ -218,6 +215,7 @@ public class Usuario_Servlet extends HttpServlet {
     private void mostrarUsuario(HttpServletRequest request, HttpServletResponse response) {
         UsuarioDAO dao = new UsuarioDAO();
         UsuarioDTO dto = new UsuarioDTO();
+        dto.getEntidad().setIdUsuario(Integer.parseInt(request.getParameter("id")));
         try {
             dto = dao.read(dto);
             request.setAttribute("usuario", dto);

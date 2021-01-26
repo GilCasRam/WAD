@@ -1,7 +1,7 @@
 <%-- 
     Document   : categoriaForm
     Created on : 24-ene-2021, 0:14:30
-    Author     : Juan
+    Author     : dany
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

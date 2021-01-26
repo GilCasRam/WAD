@@ -1,7 +1,7 @@
 <%-- 
     Document   : listaMono_Bio
     Created on : 23-ene-2021, 16:35:53
-    Author     : Juan
+    Author     : dany
 --%>
 
 <%@page import="java.sql.SQLException"%>

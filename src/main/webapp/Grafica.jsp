@@ -1,7 +1,7 @@
 <%-- 
     Document   : Grafica
-    Created on : 12-dic-2020, 12:15:17
-    Author     : Juan
+    Created on : 12-ene-2020, 12:15:17
+    Author     : dany
 --%>
 
 <%@page import="com.ipn.mx.modelo.dao.ProductoDAO"%>

@@ -30,10 +30,10 @@ public class Conexion {
      
     public void obtenerConexion_PostgreSQL() throws SQLException {
        
-        String usr = "ytnigqbqhnwaqo";
-        String pwd = "0e8ebef2bf8eb40a1c5da5499a3f717cfa4f00647903462f414eb1a643c0edbb";
+        String usr = "USERNAME";
+        String pwd = "PASSWORD";
         String driver = "org.postgresql.Driver";
-        String url = "jdbc:postgresql://ec2-52-44-46-66.compute-1.amazonaws.com:5432/d3l8j6tn2pmo6j?sslmode=require";
+        String url = "jdbc:postgresql://HOST:5432/DATABASE?sslmode=require";
          
         try {
             Class.forName(driver);

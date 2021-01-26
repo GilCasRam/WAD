@@ -18,10 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Jesus
- */
+
 @WebServlet(name = "Categoria_Servlet", urlPatterns = {"/Categoria_Servlet"})
 public class Categoria_Servlet extends HttpServlet {
 
